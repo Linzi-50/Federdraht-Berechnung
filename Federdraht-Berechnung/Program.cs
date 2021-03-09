@@ -9,21 +9,21 @@ namespace Federdraht_Berechnung
     class Program
     {
 
-        static double berechneDrahtvor(double fe2kon, double dekon)
+        static double BerechneDrahtvor(double fe2kon, double dekon)
         {
             double k1 = 0.15;// Koeffinzent
-            double dvor = 0;
-            double zwr = fe2kon * dekon;
+            double dvor ;
+            
             dvor = k1 * (Math.Pow((fe2kon * dekon), 0.33));
             dvor = (Math.Truncate(dvor));// Berechnet den ganzzahligen Teil von "dvor".
 
             return dvor;
         }
 
-        static double berechneDrahtdm(double dekon, double dvor, double f2kon, int zfkon)
+        static double BerechneDrahtdm(double dekon, double dvor, double f2kon, int zfkon)
         {
-            double tauzul = 0; // tau zulässige Schubspannung  
-            double tauf2 = 0; // tau Schubspannung bei F2
+            double tauzul ; // tau zulässige Schubspannung  
+            double tauf2 ; // tau Schubspannung bei F2
             double d = dvor;
             tauzul = 0.5 * zfkon;
             do
@@ -39,14 +39,13 @@ namespace Federdraht_Berechnung
         static void Main(string[] args)        
         {
            
-            string zf = " "; // Zugfestigkeit
-            int zfkon = 0; // Zugfestigkeit konvertiert
-            double f2kon = 0; //Federkraft konvertiert
+            string zf ; // Zugfestigkeit
+            int zfkon; // Zugfestigkeit konvertiert
+            double f2kon; //Federkraft konvertiert
             string f2 = " "; //Federkraft
             string de = " "; // Aussendurchmesser
-            double dekon = 0; // Aussendurchmesser konvertiert
-            double dm = 0; //mitlerer Durchmessetr
-            //double d =0 ; // Drahtdurchmesser
+            double dekon; // Aussendurchmesser konvertiert
+            
             
             
 
@@ -64,10 +63,10 @@ namespace Federdraht_Berechnung
             }
             if ((double.TryParse(f2, out f2kon)) && (f2kon > 0))
             {
-                double dvor = berechneDrahtvor(f2kon, dekon); 
+                double dvor = BerechneDrahtvor(f2kon, dekon); 
                 Console.WriteLine("zf= " + zfkon + "   DE = " + dekon + "   F2 = " + f2kon + "   vorberechneter Drahtdurchmesser= " + dvor );
                 
-                double d = berechneDrahtdm(dekon, dvor, f2kon, zfkon);
+                double d = BerechneDrahtdm(dekon, dvor, f2kon, zfkon);
                 Console.WriteLine(" Drahtdurchmesser =  " + d);
             }
 
