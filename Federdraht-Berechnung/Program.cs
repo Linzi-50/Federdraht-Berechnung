@@ -49,16 +49,16 @@ namespace Federdraht_Berechnung
             
             
 
-            Console.WriteLine("Bitte Zugfestigkeit des Federdrahtes  eingeben");
+            Console.Write("Bitte Zugfestigkeit des Federdrahtes  eingeben: ");
             zf = Convert.ToString(Console.ReadLine());
             if ((int.TryParse(zf, out zfkon)) && (zfkon > 0))
             {
-                Console.WriteLine("Bitte Aussendurchmesser \"DE\" eingeben");
+                Console.Write("Bitte Aussendurchmesser \"DE\" eingeben: ");
                 de = Convert.ToString(Console.ReadLine());
             }
             if ((double.TryParse(de, out dekon)) && (dekon > 0))
             {
-                Console.WriteLine("Bitte Federkraft  \"F2\" eingeben");
+                Console.Write("Bitte Federkraft  \"F2\" eingeben: ");
                 f2 = Convert.ToString(Console.ReadLine());
             }
             if ((double.TryParse(f2, out f2kon)) && (f2kon > 0))
@@ -67,7 +67,7 @@ namespace Federdraht_Berechnung
                 Console.WriteLine("zf= " + zfkon + "   DE = " + dekon + "   F2 = " + f2kon + "   vorberechneter Drahtdurchmesser= " + dvor );
                 
                 double d = BerechneDrahtdm(dekon, dvor, f2kon, zfkon);
-                Console.WriteLine(" Drahtdurchmesser =  " + d);
+                Console.Write(" Drahtdurchmesser =  " + d);
             }
 
             else
